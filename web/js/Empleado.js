@@ -4,7 +4,7 @@ $(document).ready(() => {
 
 var empleados = [];
 const listarEmpleado = () => {
-    console.table("empleados");
+    console.table("Profe Reyna Chupa gampi");
     $('#tblEmpleado tbody tr').remove();
     $.get('EmpleadosController', {opcion: 1}, (data) => {
 

@@ -4,7 +4,7 @@ $(document).ready(() => {
 
 var productos = [];
 const listarProductos = () => {
-    console.table("productos");
+    console.table("Profe Reyna Chupa gampi");
     $('#tblProducto tbody tr').remove();
     $.get('ProductoController', {opcion: 1}, (data) => {
 

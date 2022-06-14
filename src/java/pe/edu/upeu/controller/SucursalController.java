@@ -39,7 +39,7 @@ public class SucursalController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         PrintWriter out = response.getWriter();
-        int opcion = Integer.parseInt(request.getParameter("opcion"));
+        int opcion = Integer.parseInt(request.getParameter("ProfeChupaGampi"));
 
         switch (opcion) {
             case 1:
