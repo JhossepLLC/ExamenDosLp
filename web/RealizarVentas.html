@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="css/myStyles.css"/>
+    </head>
+    <body>
+        <div class="container p-4">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <a class="navbar-brand" href="#">Perfil</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="index.html">Inicio <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Config</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                                Opciones
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="Vendedores.html">Vendedores</a>
+                                <a class="dropdown-item" href="Categorias.html">Categorias</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Realizar Compra</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled">Disabled</a>
+                        </li>
+                    </ul>
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                </div>
+            </nav>
+            <!--Acciones-->
+            <div class="Acciones p-3">
+                <div class="row mt-4">
+                    <div class="col-md-4">
+                        <label for="selectEscuela">Vendedor: </label>
+                        <select class="form-control" id="selectEscuela">
+                            <option value="0">text</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="selectEscuela">Sucursal: </label>
+                        <select class="form-control" id="selectEscuela">
+                            <option value="0">text</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="selectEscuela">Cliente: </label>
+                        <select class="form-control" id="selectEscuela">
+                            <option value="0">text</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="selectEscuela">Producto: </label>
+                        <select class="form-control" id="selectEscuela">
+                            <option value="0">text</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <button class="button learn-more mt-4">
+                            <span class="circle" aria-hidden="true">
+                                <span class="icon arrow"></span>
+                            </span>
+                            <span class="button-text">Agregar</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="col-md-2">
+                        <label for="selectEscuela">Cantidad: </label>
+                        <input 
+                            class="form-control" 
+                            type="text" 
+                            id="cajaCantidad">
+                    </div>
+                    <div class="col-md-2">
+                        <label for="selectEscuela">Producto: </label>
+                        <input 
+                            class="form-control" 
+                            type="text" 
+                            id="cajaProducto" 
+                            disabled>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="selectEscuela">Precio: </label>
+                        <input 
+                            class="form-control" 
+                            type="text" 
+                            id="cajaPrecio" 
+                            disabled>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="selectEscuela">Stock: </label>
+                        <input 
+                            class="form-control" 
+                            type="text" 
+                            id="cajaStock" 
+                            disabled>
+                    </div>
+                    <div class="col-md-2 mt-4">
+                        <button class="icon-btn add-btn">
+                            <div class="add-icon"></div>
+                            <div class="btn-txt">Registrar Venta</div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="cajaTabla">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Sucursal</th>
+                            <th scope="col">Vendedor</th>
+                            <th scope="col">Cliente</th>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Detalle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Lurigancho</th>
+                            <td>Mark</td>
+                            <td>Mayra</td>
+                            <td>12/12/22</td>
+                            <td><i class="fa-solid fa-eye"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!--Modal-->
+            
+            <!--Fin Modal-->
+        </div>
+        <script src="js/jquery-3.6.0.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+    </body>
+</html>
