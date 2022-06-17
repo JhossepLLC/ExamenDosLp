@@ -5,12 +5,13 @@
 package pe.edu.upeu.dao;
 
 import java.util.List;
-import pe.edu.upeu.model.Venta;
+import pe.edu.upeu.dtos.VentaDto;
 
 /**
  *
  * @author HP
  */
 public interface VentaDao {
-    List<Venta> listarVenta(); 
+    List<VentaDto> listarVenta(); 
+    
 }

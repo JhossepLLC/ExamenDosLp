@@ -54,30 +54,30 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                 <div class="row mt-4">
                     <div class="col-md-4">
                         <label for="selectEscuela">Vendedor: </label>
-                        <select class="form-control" id="selectEscuela">
-                            <option value="0">text</option>
+                        <select class="form-control" id="selectVendedor">
+                            
                         </select>
                     </div>
                     <div class="col-md-4">
                         <label for="selectEscuela">Sucursal: </label>
-                        <select class="form-control" id="selectEscuela">
-                            <option value="0">text</option>
+                        <select class="form-control" id="selectSucursal">
+                            
                         </select>
                     </div>
                     <div class="col-md-4">
                         <label for="selectEscuela">Cliente: </label>
-                        <select class="form-control" id="selectEscuela">
-                            <option value="0">text</option>
+                        <select class="form-control" id="selectCliente">
+                            
                         </select>
                     </div>
                     <div class="col-md-4">
                         <label for="selectEscuela">Producto: </label>
-                        <select class="form-control" id="selectEscuela">
-                            <option value="0">text</option>
+                        <select class="form-control" id="selectProducto">
+                            
                         </select>
                     </div>
                     <div class="col-md-4">
-                        <button class="button learn-more mt-4">
+                        <button class="button learn-more mt-4" onclick="agregarProducto()">
                             <span class="circle" aria-hidden="true">
                                 <span class="icon arrow"></span>
                             </span>
@@ -88,46 +88,51 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 
                 <div class="row mt-4">
                     <div class="col-md-2">
-                        <label for="selectEscuela">Cantidad: </label>
+                        <label for="cajaCantidad">Cantidad: </label>
                         <input 
                             class="form-control" 
-                            type="text" 
+                            type="number" 
                             id="cajaCantidad">
                     </div>
-                    <div class="col-md-2">
-                        <label for="selectEscuela">Producto: </label>
                         <input 
                             class="form-control" 
                             type="text" 
-                            id="cajaProducto" 
+                            id="idProducto" 
+                            hidden>
+                    <div class="col-md-2">
+                        <label for="cajaNombreProducto">Producto: </label>
+                        <input 
+                            class="form-control" 
+                            type="text" 
+                            id="cajaNombreProducto" 
                             disabled>
                     </div>
                     <div class="col-md-2">
-                        <label for="selectEscuela">Precio: </label>
+                        <label for="cajaPrecioProducto">Precio: </label>
                         <input 
                             class="form-control" 
                             type="text" 
-                            id="cajaPrecio" 
+                            id="cajaPrecioProducto" 
                             disabled>
                     </div>
                     <div class="col-md-2">
-                        <label for="selectEscuela">Stock: </label>
+                        <label for="cajaStockProducto">Stock: </label>
                         <input 
                             class="form-control" 
                             type="text" 
-                            id="cajaStock" 
+                            id="cajaStockProducto" 
                             disabled>
                     </div>
                     <div class="col-md-2 mt-4">
-                        <button class="icon-btn add-btn">
-                            <div class="add-icon"></div>
-                            <div class="btn-txt">Registrar Venta</div>
+                        <button class="icon-btn add-btn" onclick="registrarVenta()">
+                            <span class="add-icon"> </span>
+                            <span class="btn-txt">Registrar Venta</span>
                         </button>
                     </div>
                 </div>
             </div>
             <div class="cajaTabla">
-                <table class="table table-striped">
+                <table class="table table-striped" id="tblRealizarVenta">
                     <thead>
                         <tr>
                             <th scope="col">Sucursal</th>
@@ -138,13 +143,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">Lurigancho</th>
-                            <td>Mark</td>
-                            <td>Mayra</td>
-                            <td>12/12/22</td>
-                            <td><i class="fa-solid fa-eye"></i></td>
-                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -154,5 +152,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
         </div>
         <script src="js/jquery-3.6.0.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
+        <script src="js/RealizarVenta.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </body>
 </html>

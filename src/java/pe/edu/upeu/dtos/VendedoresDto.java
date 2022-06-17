@@ -15,34 +15,18 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class VentaDto {
-    private Integer idVenta;
-    private Integer fechaVentas;
-    
-    private Integer idUsuarios;
-    private String nombreUsuarios;
-    private Integer passwordUsuarios;
-    private Boolean estadoUsuarios;
-    
-    private Integer idCliente;
-    private String direccionClientes;
-    private String hobbyClientes;
-    private String correoClientes;
-    
-    private Integer idSucursal;
-    private String nombreSucursales;
-    private String direccionSucursales;
-    private Boolean estadoSucursales;
-    
+public class VendedoresDto {
     private Integer idPersona;
     private String nombrePersonas;
     private String apellidoPersonas;
     private String dniPersonas;
     private String telefonoPersonas;
-    
     private Integer idEmpleado; 
     private String cargoEmpleados;
-    
+    private Integer idUsuario;
+    private String nombreUsuarios;
+    private Integer passwordUsuarios;
+    private Boolean estadoUsuarios;
     private Integer idRol;
     private String nombreRoles;
     private Boolean estadoRoles;

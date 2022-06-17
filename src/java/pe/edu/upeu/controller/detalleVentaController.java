@@ -12,17 +12,19 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import pe.edu.upeu.dao.SucursalDao;
-import pe.edu.upeu.daoImpl.SucursalDaoImpl;
+import pe.edu.upeu.dao.DetalleDao;
+import pe.edu.upeu.daoImpl.DetalleDaoImpl;
+import pe.edu.upeu.model.Detalle;
+import pe.edu.upeu.model.Venta;
 
 /**
  *
  * @author HP
  */
-@WebServlet(name = "SucursalController", urlPatterns = {"/SucursalController"})
-public class SucursalController extends HttpServlet {
+@WebServlet(name = "detalleVenta", urlPatterns = {"/detalleVenta"})
+public class detalleVentaController extends HttpServlet {
 
-    private SucursalDao sucursalDao = new SucursalDaoImpl();
+    private DetalleDao detalleDao = new DetalleDaoImpl();
     private Gson gson = new Gson();
 
     /**
@@ -37,17 +39,30 @@ public class SucursalController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
         PrintWriter out = response.getWriter();
         int opcion = Integer.parseInt(request.getParameter("opcion"));
-
         switch (opcion) {
+
             case 1:
-                out.println(gson.toJson(sucursalDao.listarSucursales()));
+                out.println(gson.toJson(detalleDao.listarDetalles()));
+                break;
+            case 2: //Agregar
+
+                String json = request.getParameter("ventaNueva");
+
+                Venta ventaNuevas = gson.fromJson(json, Venta.class);
+
+                String jsonDetalle = request.getParameter("detalleVenta");
+                Detalle detalleVentaNueva = gson.fromJson(jsonDetalle, Detalle.class);
+                
+                int idVentaCreada = detalleDao.crearVenta(ventaNuevas);
+                
+                detalleDao.crearDetalleVenta(idVentaCreada, detalleVentaNueva);
+                //productoDao.crearProducto(productoNuevo, productoDto.getIdCategoria());
                 break;
         }
     }
-    
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

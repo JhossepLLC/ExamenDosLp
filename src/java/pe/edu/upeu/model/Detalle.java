@@ -17,6 +17,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Detalle {
     private Integer idDetalle;
-    private Integer precioDetalle;
+    private Integer idVenta;
+    private Integer idProducto;
+    private Double precioDetalle;
     private Integer cantidadDetalle;
 }

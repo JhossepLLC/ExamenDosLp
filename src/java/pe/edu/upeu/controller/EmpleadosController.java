@@ -35,9 +35,8 @@ public class EmpleadosController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
         PrintWriter out = response.getWriter();
-        int opcion = Integer.parseInt(request.getParameter("ProfeChupaGampi"));
+        int opcion = Integer.parseInt(request.getParameter("opcion"));
         switch (opcion) {
 
             case 1:

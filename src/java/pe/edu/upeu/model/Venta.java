@@ -4,6 +4,7 @@
  */
 package pe.edu.upeu.model;
 
+import java.util.Date;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,5 +18,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Venta {
     private Integer idVenta;
-    private Integer fechaVenta;
+    private Date fechaVenta;
+    private Integer idUsuario;
+    private Integer idCliente;
+    private Integer idSucursal;
 }

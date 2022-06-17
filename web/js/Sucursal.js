@@ -4,7 +4,7 @@ $(document).ready(() => {
 
 var sucursales = [];
 const listarSucursal = () => {
-    console.table("Profe Reyna Chupa gampi");
+    console.table("sucursales");
     $('#tblSucursal tbody tr').remove();
     $.get('SucursalController', {opcion: 1}, (data) => {
 

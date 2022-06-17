@@ -10,27 +10,25 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import pe.edu.upeu.config.Conexion;
-import pe.edu.upeu.dao.ClienteDao;
-import pe.edu.upeu.dtos.ClienteDto;
-import pe.edu.upeu.dtos.EmpleadoDto;
-import pe.edu.upeu.model.Cliente;
+import pe.edu.upeu.dao.CategoriaDao;
+import pe.edu.upeu.model.Categoria;
 
 /**
  *
  * @author HP
  */
-public class ClienteDaoImpl implements ClienteDao {
+public class CategoriaDaoImpl implements CategoriaDao {
 
     private PreparedStatement preparedStatement;
     private ResultSet resultset;
     private Connection conexion;
 
     @Override
-    public List<ClienteDto> listarCliente() {
+    public List<Categoria> listarCategoria() {
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-        String SQL = "SELECT * FROM clientes c, personas p WHERE c.idPersona = p.idPersona";
+        String SQL = "SELECT * FROM categorias";
 
-        List<ClienteDto> empleados = new ArrayList<ClienteDto>(10);
+        List<Categoria> categorias = new ArrayList<Categoria>(10);
 
         try {
 
@@ -40,13 +38,11 @@ public class ClienteDaoImpl implements ClienteDao {
 
             while (resultset.next()) {
 
-                ClienteDto cliente = new ClienteDto();
-                cliente.setIdCliente(resultset.getInt("idCliente"));
-                cliente.setNombrePersonas(resultset.getString("nombrePersona"));
-                cliente.setApellidoPersonas(resultset.getString("apellidoPersona"));
-                cliente.setDniPersonas(resultset.getString("dniPersona"));
-                cliente.setTelefonoPersonas(resultset.getString("dniPersona"));
-                empleados.add(cliente);
+                Categoria categoria = new Categoria();
+                categoria.setIdCategoria(resultset.getInt("idCategoria"));
+                categoria.setNombreCategoria(resultset.getString("nombreCategoria"));
+                categoria.setEstadoCategoria(resultset.getBoolean("estadoCategoria"));
+                categorias.add(categoria);
 
             }
 
@@ -56,7 +52,7 @@ public class ClienteDaoImpl implements ClienteDao {
 
         }
 
-        return empleados;
+        return categorias;
     }
 
 }

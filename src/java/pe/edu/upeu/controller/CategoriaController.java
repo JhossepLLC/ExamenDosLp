@@ -12,17 +12,19 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import pe.edu.upeu.dao.SucursalDao;
-import pe.edu.upeu.daoImpl.SucursalDaoImpl;
+import pe.edu.upeu.dao.CategoriaDao;
+import pe.edu.upeu.dao.ClienteDao;
+import pe.edu.upeu.daoImpl.CategoriaDaoImpl;
+import pe.edu.upeu.daoImpl.ClienteDaoImpl;
 
 /**
  *
  * @author HP
  */
-@WebServlet(name = "SucursalController", urlPatterns = {"/SucursalController"})
-public class SucursalController extends HttpServlet {
+@WebServlet(name = "CategoriaController", urlPatterns = {"/CategoriaController"})
+public class CategoriaController extends HttpServlet {
 
-    private SucursalDao sucursalDao = new SucursalDaoImpl();
+    private CategoriaDao categoriasDao = new CategoriaDaoImpl();
     private Gson gson = new Gson();
 
     /**
@@ -37,17 +39,17 @@ public class SucursalController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
         PrintWriter out = response.getWriter();
+
         int opcion = Integer.parseInt(request.getParameter("opcion"));
 
         switch (opcion) {
             case 1:
-                out.println(gson.toJson(sucursalDao.listarSucursales()));
+                out.println(gson.toJson(categoriasDao.listarCategoria()));
                 break;
         }
     }
-    
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

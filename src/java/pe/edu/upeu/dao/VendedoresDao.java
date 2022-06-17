@@ -5,16 +5,12 @@
 package pe.edu.upeu.dao;
 
 import java.util.List;
-import java.util.Map;
-import pe.edu.upeu.model.Detalle;
-import pe.edu.upeu.model.Venta;
+import pe.edu.upeu.dtos.VendedoresDto;
 
 /**
  *
  * @author HP
  */
-public interface DetalleDao {
-    List<Map<String,Object> > listarDetalles();
-    int crearVenta(Venta producto);
-    int crearDetalleVenta(int idVenta, Detalle detalles);
+public interface VendedoresDao {
+    List<VendedoresDto> listarVendedores(); 
 }

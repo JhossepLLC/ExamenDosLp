@@ -6,7 +6,7 @@ package pe.edu.upeu.daoImpl;
 
 import java.util.List;
 import pe.edu.upeu.dao.VentaDao;
-import pe.edu.upeu.model.Venta;
+import pe.edu.upeu.dtos.VentaDto;
 
 /**
  *
@@ -15,8 +15,8 @@ import pe.edu.upeu.model.Venta;
 public class VentaDaoImpl implements VentaDao{
 
     @Override
-    public List<Venta> listarVenta() {
+    public List<VentaDto> listarVenta() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
     
+    }
 }
