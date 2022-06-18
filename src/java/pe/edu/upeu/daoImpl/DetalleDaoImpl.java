@@ -58,6 +58,7 @@ public class DetalleDaoImpl implements DetalleDao {
                 detalle.put("nombreEmpleados", resultset.getString("empleados"));
                 detalle.put("nombreSucursales", resultset.getString("sucursales"));                
                 detalle.put("fechaVentas", resultset.getString("fecha"));
+                detalle.put("idVentas", resultset.getInt("idVenta"));
                 detalles.add(detalle);
             }
 
@@ -125,5 +126,43 @@ public class DetalleDaoImpl implements DetalleDao {
             e.printStackTrace();
         }
         return resultado;
+    }
+
+    @Override
+    public List<Map<String, Object>> listarDetalleVenta(int idVentas) {
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        StringBuilder SQL = new StringBuilder();
+        SQL.append("SELECT ");
+        SQL.append("p.nombreProducto,d.precioDetalle, d.cantidadDetalle, c.nombreCategoria ");
+        SQL.append("FROM ");
+        SQL.append(" detalles d JOIN productos p ");
+        SQL.append(" ON d.idProducto=p.idProducto ");
+        SQL.append(" JOIN categorias c ");
+        SQL.append(" ON p.idCategoria=c.idCategoria where d.idVenta = ");
+        SQL.append(idVentas);
+        SQL.append(" ");
+        List<Map<String, Object>> detallesCompra = new ArrayList<>();
+        try {
+            conexion = Conexion.getConexion();
+            preparedStatement = conexion.prepareStatement(SQL.toString());
+            resultset = preparedStatement.executeQuery();
+            
+            while (resultset.next()) {
+                
+               Map<String, Object> detalleCompra = new HashMap<>();
+                detalleCompra.put("nombreProductos", resultset.getString("nombreProducto"));
+                detalleCompra.put("precioDetalles", resultset.getDouble("precioDetalle"));
+                detalleCompra.put("cantidadDetalles", resultset.getInt("cantidadDetalle"));
+                detalleCompra.put("nombreCategoria", resultset.getString("nombreCategoria"));
+                detallesCompra.add(detalleCompra);
+            }
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+        }
+        return detallesCompra;
+    
     }
 }

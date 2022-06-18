@@ -17,4 +17,7 @@ public interface DetalleDao {
     List<Map<String,Object> > listarDetalles();
     int crearVenta(Venta producto);
     int crearDetalleVenta(int idVenta, Detalle detalles);
+    
+    List<Map<String, Object>> listarDetalleVenta(int idVentas);
+    
 }

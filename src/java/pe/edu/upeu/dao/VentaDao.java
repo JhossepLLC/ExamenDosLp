@@ -13,5 +13,4 @@ import pe.edu.upeu.dtos.VentaDto;
  */
 public interface VentaDao {
     List<VentaDto> listarVenta(); 
-    
 }

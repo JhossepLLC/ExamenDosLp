@@ -104,7 +104,7 @@ const registrarVenta = () => {
     const idProducto = Number($('#idProducto').val());
     const cantidadDetalle = Number($('#cajaCantidad').val());
     const stockProducto = Number($('#cajaStockProducto').val());
-    
+
     if (cajaCantidad > stockProducto) {
         Swal.fire({
             icon: 'error',
@@ -123,8 +123,9 @@ const registrarVenta = () => {
             imageAlt: 'Custom image',
         })
         return;
-    };
-    
+    }
+    ;
+
     const ventaNueva = {
         idSucursal,
         idCliente,
@@ -133,7 +134,7 @@ const registrarVenta = () => {
     console.log(ventaNueva);
     const detalleVenta = {
         idProducto,
-        precioDetalle: cantidadDetalle*stockProducto,
+        precioDetalle: cantidadDetalle * stockProducto,
         cantidadDetalle
     };
     console.log(detalleVenta);
@@ -146,15 +147,15 @@ const registrarVenta = () => {
         $('#selectSucursal').val('o');
         $('#selectCliente').val('o');
         $('#selectVendedor').val('o');
-        
+
         listarRegistroVenta();
 
     });
 };
 
 
-const listarRegistroVenta = () =>{
-    console.log("Estas juncionando")
+const listarRegistroVenta = () => {
+    console.log("Estas juncionando");
     $('#tblRealizarVenta tbody tr').remove();
     $.get('detalleVenta', {opcion: 1}, (data) => {
         ventas = JSON.parse(data);
@@ -167,10 +168,30 @@ const listarRegistroVenta = () =>{
                         <td>${venta.nombreEmpleados}</td>
                         <td>${venta.nombreCliente}</td>
                         <td>${venta.fechaVentas}</td>
-                         <td><a href='#' onclick='mostrarDetalleProducto(${venta.idProducto})''><i class="fa-solid fa-eye"></i></a></td>
+                        <td><a href='#' onclick='mostrarDetalleVenta(${venta.idVentas})'><i class="fa-solid fa-eye"></i></a></td>
                     </tr>
                 `);
         });
     });
+
 };
 
+const mostrarDetalleVenta = (idVentas) => {
+    $('#staticBackdrop').modal();
+    $('#tblDetalleCompraProducto tbody tr').remove();
+    $.get('detalleVenta', {opcion: 3, idVentas}, (data) => {
+        let detalleVentas = JSON.parse(data);
+        console.table(detalleVentas);
+        detalleVentas.forEach(
+                (detalleVenta) => {
+                    $('#tblRealizarVenta tbody').append(`
+                    <tr>
+                        <td>${detalleVenta.cantidadDetalles}</td>
+                        <td>${detalleVenta.nombreProductos}</td>
+                        <td>${detalleVenta.precioDetalles}</td>
+                        <td>${detalleVenta.nombreCategoria}</td>
+                    </tr>
+                `);
+        })
+    });
+};

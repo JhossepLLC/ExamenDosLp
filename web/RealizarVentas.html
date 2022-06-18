@@ -55,25 +55,25 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                     <div class="col-md-4">
                         <label for="selectEscuela">Vendedor: </label>
                         <select class="form-control" id="selectVendedor">
-                            
+
                         </select>
                     </div>
                     <div class="col-md-4">
                         <label for="selectEscuela">Sucursal: </label>
                         <select class="form-control" id="selectSucursal">
-                            
+
                         </select>
                     </div>
                     <div class="col-md-4">
                         <label for="selectEscuela">Cliente: </label>
                         <select class="form-control" id="selectCliente">
-                            
+
                         </select>
                     </div>
                     <div class="col-md-4">
                         <label for="selectEscuela">Producto: </label>
                         <select class="form-control" id="selectProducto">
-                            
+
                         </select>
                     </div>
                     <div class="col-md-4">
@@ -94,11 +94,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                             type="number" 
                             id="cajaCantidad">
                     </div>
-                        <input 
-                            class="form-control" 
-                            type="text" 
-                            id="idProducto" 
-                            hidden>
+                    <input 
+                        class="form-control" 
+                        type="text" 
+                        id="idProducto" 
+                        hidden>
                     <div class="col-md-2">
                         <label for="cajaNombreProducto">Producto: </label>
                         <input 
@@ -146,8 +146,38 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                     </tbody>
                 </table>
             </div>
-            <!--Modal-->
-            
+
+            <!-- Modal -->
+            <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">Detalles Producto</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <table class="table" id="tblDetalleCompraProducto">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th scope="col">Cantidad</th>
+                                        <th scope="col">Producto</th>
+                                        <th scope="col">Precio</th>
+                                        <th scope="col">Categoria</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Okey</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!--Fin Modal-->
         </div>
         <script src="js/jquery-3.6.0.min.js"></script>

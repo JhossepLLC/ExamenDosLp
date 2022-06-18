@@ -60,6 +60,10 @@ public class detalleVentaController extends HttpServlet {
                 detalleDao.crearDetalleVenta(idVentaCreada, detalleVentaNueva);
                 //productoDao.crearProducto(productoNuevo, productoDto.getIdCategoria());
                 break;
+              case 3:
+                  int idVenta = Integer.parseInt(request.getParameter("idVentas"));
+                out.println(gson.toJson(detalleDao.listarDetalleVenta(idVenta)));
+                break;
         }
     }
 
