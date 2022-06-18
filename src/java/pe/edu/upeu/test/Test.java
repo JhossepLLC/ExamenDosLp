@@ -28,11 +28,22 @@ import pe.edu.upeu.model.Venta;
  * @author HP
  */
 public class Test {
-    
+
     static Gson gson = new Gson();
     static DetalleDao detalleDao = new DetalleDaoImpl();
-    
+
     public static void main(String[] args) {
-        System.out.println(gson.toJson(detalleDao.listarDetalleVenta(3)));
+        Venta ventaNuevas = new Venta();
+        ventaNuevas.setIdCliente(6);
+        ventaNuevas.setIdSucursal(4);
+        ventaNuevas.setIdUsuario(4);
+
+        int idVentaCreada = detalleDao.crearVenta(ventaNuevas);
+        Detalle detalleVentaNueva = new Detalle();
+        detalleVentaNueva.setCantidadDetalle(3);
+        detalleVentaNueva.setIdProducto(10);
+        detalleVentaNueva.setPrecioDetalle(6.9);
+        
+        detalleDao.crearDetalleVenta(idVentaCreada, detalleVentaNueva);
     }
 }

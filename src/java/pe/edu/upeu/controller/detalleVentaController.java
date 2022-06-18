@@ -56,9 +56,10 @@ public class detalleVentaController extends HttpServlet {
                 Detalle detalleVentaNueva = gson.fromJson(jsonDetalle, Detalle.class);
                 
                 int idVentaCreada = detalleDao.crearVenta(ventaNuevas);
-                
+                System.out.println(detalleVentaNueva.toString() + " " + idVentaCreada);
                 detalleDao.crearDetalleVenta(idVentaCreada, detalleVentaNueva);
-                //productoDao.crearProducto(productoNuevo, productoDto.getIdCategoria());
+                
+                //actualizar tabla producto con la
                 break;
               case 3:
                   int idVenta = Integer.parseInt(request.getParameter("idVentas"));

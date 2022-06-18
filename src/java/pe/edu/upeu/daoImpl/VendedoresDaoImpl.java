@@ -26,7 +26,7 @@ public class VendedoresDaoImpl implements VendedoresDao {
     @Override
     public List<VendedoresDto> listarVendedores() {
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-        String SQL = "SELECT p.idPersona, p.nombrePersona, p.apellidoPersona, p.dniPersona, p.telefonoPersona, r.nombreRol FROM personas p JOIN empleados e ON p.idPersona=e.idPersona JOIN usuarios u ON e.idEmpleado=u.idEmpleado JOIN roles r ON r.idRol=u.idRol WHERE r.nombreRol='vendedor'";
+        String SQL = "SELECT u.idUsuario, p.nombrePersona, p.apellidoPersona, p.dniPersona, p.telefonoPersona, r.nombreRol FROM personas p JOIN empleados e ON p.idPersona=e.idPersona JOIN usuarios u ON e.idEmpleado=u.idEmpleado JOIN roles r ON r.idRol=u.idRol WHERE r.idRol=3";
         List<VendedoresDto> vendedores = new ArrayList<VendedoresDto>(10);
 
         try {
@@ -38,7 +38,7 @@ public class VendedoresDaoImpl implements VendedoresDao {
             while (resultset.next()) {
 
                 VendedoresDto vendedor = new VendedoresDto();
-                vendedor.setIdPersona(resultset.getInt("idPersona"));
+                vendedor.setIdUsuario(resultset.getInt("idUsuario"));
                 vendedor.setNombrePersonas(resultset.getString("nombrePersona"));
                 vendedor.setApellidoPersonas(resultset.getString("apellidoPersona"));
                 vendedor.setDniPersonas(resultset.getString("dniPersona"));

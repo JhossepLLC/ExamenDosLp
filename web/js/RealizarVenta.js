@@ -4,6 +4,7 @@ $(document).ready(() => {
     listarCliente();
     listarProducto();
     listarRegistroVenta();
+    $('#cajaCuenta').css('display', 'none');
 });
 
 var productos = [];
@@ -18,7 +19,7 @@ const listarVendedor = () => {
                 (vendedor) => {
             $('#selectVendedor').append(`
                     
-                    <option value="${vendedor.idPersona}">${vendedor.nombrePersonas}</option>
+                    <option value="${vendedor.idUsuario}">${vendedor.nombrePersonas}</option>
                 `);
         }
         );
@@ -48,7 +49,6 @@ const listarSucursal = () => {
 
 
 const listarCliente = () => {
-
     $('#selectCliente option').remove();
     $.get('ClienteController', {opcion: 1}, (data) => {
         const clientes = JSON.parse(data);
@@ -86,6 +86,7 @@ const listarProducto = () => {
 };
 
 const agregarProducto = () => {
+
     const idProducto = Number($('#selectProducto').val());
 
     const productoEncontrado = productos.find((producto) => producto.idProducto === idProducto);
@@ -93,7 +94,11 @@ const agregarProducto = () => {
     $('#cajaNombreProducto').val(productoEncontrado.nombreProductos);
     $('#cajaPrecioProducto').val(productoEncontrado.precioProductos);
     $('#cajaStockProducto').val(productoEncontrado.stockProductos);
-    $('#txtIdProducto').val(productoEncontrado.idProducto);
+    $('#idProducto').val(productoEncontrado.idProducto);
+
+    $('#cajaCuenta').attr('style', (i, style) => {
+        return style.replace(/display[^;]+;?/g, '');
+    });
 };
 
 
@@ -105,7 +110,7 @@ const registrarVenta = () => {
     const cantidadDetalle = Number($('#cajaCantidad').val());
     const stockProducto = Number($('#cajaStockProducto').val());
 
-    if (cajaCantidad > stockProducto) {
+    if (cantidadDetalle > stockProducto) {
         Swal.fire({
             icon: 'error',
             title: 'Ops...',
@@ -113,7 +118,7 @@ const registrarVenta = () => {
             footer: 'Vuelva a Ingresar una Cantidad que no pase el stock'
         })
         return;
-    } else if (cajaCantidad === 0) {
+    } else if (cantidadDetalle === 0) {
         Swal.fire({
             title: 'Error!',
             text: 'Porfavor Ingrese la cantidad.',
@@ -142,14 +147,19 @@ const registrarVenta = () => {
     const detalle = JSON.stringify({...detalleVenta});
     $.post('detalleVenta', {opcion: 2, ventaNueva: venta, detalleVenta: detalle}, () => {
 
-        alert('VentaAgregada  correctamente');
         // formatear el formulario
         $('#selectSucursal').val('o');
         $('#selectCliente').val('o');
         $('#selectVendedor').val('o');
-
         listarRegistroVenta();
-
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Registrado Correctamente',
+            showConfirmButton: false,
+            timer: 1500
+        });
+        $('#cajaCuenta').css('display', 'none');
     });
 };
 
@@ -184,7 +194,7 @@ const mostrarDetalleVenta = (idVentas) => {
         console.table(detalleVentas);
         detalleVentas.forEach(
                 (detalleVenta) => {
-                    $('#tblRealizarVenta tbody').append(`
+            $('#tblDetalleCompraProducto tbody').append(`
                     <tr>
                         <td>${detalleVenta.cantidadDetalles}</td>
                         <td>${detalleVenta.nombreProductos}</td>
